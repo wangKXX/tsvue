@@ -60,6 +60,7 @@ class indexdb {
   addData(name, obj) {
     let transaction = this.db.transaction(name, 'readwrite')
     let store = transaction.objectStore(name)
+    console.log(obj, 'debugg')
     if (obj instanceof Array) {
       obj.map(item => {
         store.add(item)

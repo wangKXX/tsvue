@@ -1,32 +1,5 @@
 <template>
   <div class="hello">
-    <!-- <audio src="http://www.w3school.com.cn/i/song.ogg" controls></audio>
-    <audio src="http://www.w3school.com.cn/i/song.ogg" controls></audio> -->
-    <!-- <video src="http://vjs.zencdn.net/v/oceans.mp4" controls playsinline width="100%" muted></video>
-    <video src="http://vjs.zencdn.net/v/oceans.mp4" controls playsinline width="100%" muted></video> -->
-    <!-- <button @click="addData">增加数据</button>
-    <button @click="removeData">删除数据</button>
-    <div>rxjs</div>
-    <button @click="of">of</button>
-    <button @click="pipe">pipe, concat</button>
-    <button @click="delay">delay, concat</button> -->
-  <!-- <div class="video-container">
-		<video autoplay playsinline src="http://cloudclass-dev.oss-cn-beijing.aliyuncs.com/test-wsh/testvideoplay/2.mp4" controls></video>
-		<button class='play'>Play/pause</button>
-		<button class='fullscreen'>Fullscreen</button>
-	</div>
-
-	<div class="video-container">
-		<video autoplay muted playsinline src="http://cloudclass-dev.oss-cn-beijing.aliyuncs.com/test-wsh/testvideoplay/3.mp4" controls></video>
-		<button class='play'>Play/pause</button>
-		<button class='fullscreen'>Fullscreen</button>
-	</div> -->
-	<!-- <div class="audio-container">
-		<audio autoplay controls src="http://cloudclass-dev.oss-cn-beijing.aliyuncs.com/test-wsh/testvideoplay/iphone-inline-video-master/demo/test.mp3" type="audio/mpeg"></audio>
-	</div>
-  <div class="audio-container">
-		<audio autoplay controls src="http://cloudclass-dev.oss-cn-beijing.aliyuncs.com/test-wsh/testvideoplay/iphone-inline-video-master/demo/test.mp3" type="audio/mpeg"></audio>
-	</div> -->
   <input type="text" :value="showTxt">
   <button @click="handler" ref="btn">click me</button>
   <button @click="genraterHandler">genrater</button>
@@ -36,8 +9,6 @@
 <script>
 import indexdb from 'common/tools/indexDBRx'
 import RxTool from 'common/tools/rxJsTools'
-import '../assets/iphone-inline-video.js'
-require('../assets/style.css')
 import { 
   Observable,
   Subject,
@@ -71,16 +42,16 @@ export default {
     let db = new indexdb()
     this.db = db
     this.indexdbObserve = db.create('test1', 1)
+    const _this = this
     this.indexdbObserve.subscribe({
       complete() {
         db.createAddId('teacher')
+        _this.addData()
       },
       error(err) {
         throw err
       }
     })
-    this.Tools = new RxTool()
-    // Tools.of([0, 1, 2, 3])
   },
   methods: {
     genraterHandler() {
